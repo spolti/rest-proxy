@@ -1,4 +1,4 @@
 # Version information
-upstream kserve/rest-proxy version: v0.11.0-rc0
+upstream rest-proxy version: v0.11.0
 opendatahub version: latest
-opendatahub rest-proxy branch: main
+opendatahub rest-proxy branch: release-0.11
