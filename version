@@ -1,5 +1,4 @@
 # Version information
-upstream kserve modelmesh version: v0.11.0-alpha
-upstream rest-proxy version: v0.10.0
-opendatahub version: 1.4.2 
-opendatahub rest-proxy branch: release-v0.10.0
+upstream rest-proxy version: v0.11.0
+opendatahub version: latest
+opendatahub rest-proxy branch: release-0.11.0
