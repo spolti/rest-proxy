@@ -23,7 +23,7 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
@@ -36,7 +36,10 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 )
 
-// remove when upgrade to controller-runtime 0.15.xor apimachinery to 0.27.x
-// Fixes github.com/elazarl/goproxy Denial of Service (DoS)
-// This dependency was remove from apimachinery 0.27.0
-replace k8s.io/apimachinery => k8s.io/apimachinery v0.27.0
+replace (
+	// fixes pkg/mod/github.com/golang/glog@v1.1.0/internal/logsink/logsink.go:123:41: undeclared name: any (requires version go1.18 or later)
+	// remove when updating to go lang 1.19
+	github.com/golang/glog => github.com/golang/glog v1.0.0
+	golang.org/x/net => golang.org/x/net v0.17.0
+	k8s.io/apimachinery => k8s.io/apimachinery v0.27.0
+)
