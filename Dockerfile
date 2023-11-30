@@ -94,6 +94,7 @@ RUN true \
 COPY .pre-commit-config.yaml ./
 RUN git init && \
     pre-commit install-hooks && \
+    git config --global --add safe.directory "*" && \
     rm -rf .git
 
 # Download dependencies before copying the source so they will be cached
