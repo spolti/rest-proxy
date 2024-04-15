@@ -37,11 +37,9 @@ require (
 )
 
 replace (
-	// The x/crypto is pulled from golang.org/x/net@v0.10.0
-	// Fixes CVE-2023-48795 - golang.org/x/crypto Authentication Bypass by Capture-replay
-	golang.org/x/crypto => golang.org/x/crypto v0.17.0
-	golang.org/x/net => golang.org/x/net v0.17.0
-
+	// Fixes CVE-2023-45288
+	golang.org/x/net => golang.org/x/net v0.23.0
+	
 	// Fixes github.com/elazarl/goproxy Denial of Service (DoS), the dependency was removed in v0.27.0
 	// Remove below when upgrading to controller-runtime 0.15.x or apimachinery to 0.27.x
 	k8s.io/apimachinery => k8s.io/apimachinery v0.27.0
