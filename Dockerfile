@@ -126,7 +126,7 @@ ARG TARGETARCH
 #--mount=type=cache,target=/root/.cache/go-build \
     #--mount=type=cache,target=/go/pkg \
 #RUN git config --global --add safe.directory /workspace 
-
+USER root
 # Install Git
 RUN dnf install -y git && dnf clean all
 
