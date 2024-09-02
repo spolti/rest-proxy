@@ -35,8 +35,8 @@ RUN --mount=type=cache,target=/root/.cache/dnf:rw \
 
 # Install pre-commit
 ENV PIP_CACHE_DIR=/root/.cache/pip
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install pre-commit
+#RUN --mount=type=cache,target=/root/.cache/pip \
+RUN pip install pre-commit
 
 # When using the BuildKit backend, Docker predefines a set of ARG variables with
 # information on the platform of the node performing the build (build platform)
