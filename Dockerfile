@@ -122,9 +122,11 @@ ARG TARGETARCH
 
 # Build the binaries using native go compiler from BUILDPLATFORM but compiled output for TARGETPLATFORM
 # https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/
-RUN --mount=type=cache,target=/root/.cache/go-build \
-    --mount=type=cache,target=/go/pkg \
-    GOOS=${TARGETOS:-linux} \
+
+#--mount=type=cache,target=/root/.cache/go-build \
+    #--mount=type=cache,target=/go/pkg \
+
+RUN GOOS=${TARGETOS:-linux} \
     GOARCH=${TARGETARCH:-amd64} \
     CGO_ENABLED=0 \
     GO111MODULE=on \
