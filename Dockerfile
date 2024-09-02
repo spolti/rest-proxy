@@ -134,7 +134,7 @@ RUN GOOS=${TARGETOS:-linux} \
     GOARCH=${TARGETARCH:-amd64} \
     CGO_ENABLED=0 \
     GO111MODULE=on \
-    go mod tidy && go build -a -o /go/bin/server ./proxy/
+    go mod tidy && go build -buildvcs=false -a -o /go/bin/server ./proxy/
 
 
 ###############################################################################
