@@ -114,6 +114,7 @@ LABEL image="build"
 # Copy the source
 COPY . ./
 
+RUN git config --global --add safe.directory /workspace
 # https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
 # don't provide "default" values (e.g. 'ARG TARGETARCH=amd64') for non-buildx environments,
 # see https://github.com/docker/buildx/issues/510
@@ -134,7 +135,7 @@ RUN GOOS=${TARGETOS:-linux} \
     GOARCH=${TARGETARCH:-amd64} \
     CGO_ENABLED=0 \
     GO111MODULE=on \
-    go mod tidy && go build -buildvcs=false -a -o /go/bin/server ./proxy/
+    go mod tidy && go build -a -o /go/bin/server ./proxy/
 
 
 ###############################################################################
