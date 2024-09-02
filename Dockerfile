@@ -114,7 +114,9 @@ LABEL image="build"
 # Copy the source
 COPY . ./
 
-RUN git config --global --add safe.directory /workspace
+#RUN git config --global --add safe.directory /workspace
+
+RUN git config --global --add safe.directory /opt/app-root/src
 # https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
 # don't provide "default" values (e.g. 'ARG TARGETARCH=amd64') for non-buildx environments,
 # see https://github.com/docker/buildx/issues/510
