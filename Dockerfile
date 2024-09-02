@@ -125,6 +125,7 @@ ARG TARGETARCH
 
 #--mount=type=cache,target=/root/.cache/go-build \
     #--mount=type=cache,target=/go/pkg \
+RUN git config --global --add safe.directory /workspace 
 
 RUN GOOS=${TARGETOS:-linux} \
     GOARCH=${TARGETARCH:-amd64} \
