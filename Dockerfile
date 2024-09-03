@@ -113,10 +113,8 @@ LABEL image="build"
 
 # Copy the source
 COPY . ./
-
-#RUN git config --global --add safe.directory /workspace
-
-RUN git config --global --add safe.directory /opt/app-root/src
+# Download dependencies before copying the source so they will be cached
+RUN go mod download
 
 # https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
 # don't provide "default" values (e.g. 'ARG TARGETARCH=amd64') for non-buildx environments,
