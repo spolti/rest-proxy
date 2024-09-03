@@ -117,6 +117,7 @@ COPY . ./
 #RUN git config --global --add safe.directory /workspace
 
 RUN git config --global --add safe.directory /opt/app-root/src
+
 # https://docs.docker.com/engine/reference/builder/#automatic-platform-args-in-the-global-scope
 # don't provide "default" values (e.g. 'ARG TARGETARCH=amd64') for non-buildx environments,
 # see https://github.com/docker/buildx/issues/510
@@ -126,13 +127,13 @@ ARG TARGETARCH
 # Build the binaries using native go compiler from BUILDPLATFORM but compiled output for TARGETPLATFORM
 # https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/
 
-#--mount=type=cache,target=/root/.cache/go-build \
-    #--mount=type=cache,target=/go/pkg \
-#RUN git config --global --add safe.directory /workspace 
+
 USER root
 
 
-RUN GOOS=${TARGETOS:-linux} \
+RUN --mount=type=cache,target=/root/.cache/go-build \
+    --mount=type=cache,target=/go/pkg \
+    GOOS=${TARGETOS:-linux} \
     GOARCH=${TARGETARCH:-amd64} \
     CGO_ENABLED=0 \
     GO111MODULE=on \
