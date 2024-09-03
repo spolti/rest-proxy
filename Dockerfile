@@ -130,8 +130,7 @@ ARG TARGETARCH
     #--mount=type=cache,target=/go/pkg \
 #RUN git config --global --add safe.directory /workspace 
 USER root
-# Install Git
-RUN dnf install -y git && dnf clean all
+
 
 RUN GOOS=${TARGETOS:-linux} \
     GOARCH=${TARGETARCH:-amd64} \
